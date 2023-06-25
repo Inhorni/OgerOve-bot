@@ -14,9 +14,16 @@ import java.util.Random;
 public class OgerOve extends ListenerAdapter {
 
     private final ShardManager shardManager;
+    private final String[] responses = {
+            "Ja, auf jeden Fall!",
+            "Vielleicht...",
+            "Ich weiß es nicht.",
+            "Frag mich später nochmal.",
+            "Nein, auf keinen Fall!"
+    };
 
     public OgerOve() {
-        String token = "redacted";
+        String token = "";
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setActivity(Activity.playing("BoarHunt Oger Edition"));
@@ -32,7 +39,7 @@ public class OgerOve extends ListenerAdapter {
     }
 
     public static void main(String[] args) {
-        JDABuilder builder = JDABuilder.createDefault("redacted");
+        JDABuilder builder = JDABuilder.createDefault("");
         builder.addEventListeners(new OgerOve());
 
         // Enable necessary intents
@@ -54,34 +61,42 @@ public class OgerOve extends ListenerAdapter {
                     "!michi - postet bild von MICHI!!!!!\n" + "!?\n" + "!gamble\n" + "!Schuledodgen").queue();
         } else if (event.getMessage().getContentRaw().contains(":Oger_Mikeremovebgpreview:")) {
             event.getChannel().sendMessage("aughhhhh").queue();
-        }else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("WismarerOger"))) {
+        } else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("WismarerOger"))) {
             event.getChannel().sendMessage("Wildschwein Jagen!!!!!!!!!!!!!").queue();
-        }else if (event.getMessage().getContentRaw().equalsIgnoreCase("!michi")) {
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!michi")) {
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/1015302578919190548/1121705937351217182/UgaUgaMichi.jpg").queue();
-        }else if (event.getMessage().getContentRaw().equalsIgnoreCase("!cancerdog")) {
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!cancerdog")) {
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/526697763447111680/1121791547898351778/unknown.jpg https://cdn.discordapp.com/attachments/526697763447111680/1121791547390828654/Leon_Pog.png").queue();
-        }else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("OgerOve"))) {
+        } else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("OgerOve"))) {
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/1015302578919190548/1121318532559409253/IMG_4628.jpg").queue();
-        }else if (event.getMessage().getContentRaw().equalsIgnoreCase("!hebel")) {
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!hebel")) {
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/526697763447111680/1121791710436003970/Screenshot_20230218_230908.png").queue();
-        }else if (event.getMessage().getContentRaw().equalsIgnoreCase("!?")) {
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!?")) {
             event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/738160562352947331/1111762523901935706/china.mp4").queue();
-        }  else if (event.getMessage().getContentRaw().equalsIgnoreCase("!Jagen")) {
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!Jagen")) {
             int randomNumber = (int) (Math.random() * 100); // Generate a random number between 0 and 100
             event.getChannel().sendMessage("Du hast " + randomNumber + " Wildschweine gefangen").queue();
-        }else if (event.getMessage().getContentRaw().equalsIgnoreCase("!Schuledodgen")) {
-                // Generate a random response
-                Random random = new Random();
-                boolean shouldDodge = random.nextBoolean();
+        } else if (event.getMessage().getContentRaw().equalsIgnoreCase("!Schuledodgen")) {
+            // Generate a random response
+            Random random = new Random();
+            boolean shouldDodge = random.nextBoolean();
 
-                // Send the response
-                if (shouldDodge) {
-                    event.getChannel().sendMessage("Bleib zuhause du schwuchtel").queue();
-                } else {
-                    event.getChannel().sendMessage("Du kommst morgen du wixxer").queue();
-                }
+            // Send the response
+            if (shouldDodge) {
+                event.getChannel().sendMessage("Bleib zuhause du schwuchtel").queue();
+            } else {
+                event.getChannel().sendMessage("Du kommst morgen du wixxer").queue();
             }
+            }else if(event.getMessage().getContentRaw().equalsIgnoreCase("!holyogre")) {
+            // Generate a random response
+            Random random = new Random();
+            String response = responses[random.nextInt(responses.length)];
+
+            // Send the response
+            event.getChannel().sendMessage(response).queue();
         }
+    }
+
 
     @Override
     public void onMessageReactionAdd( MessageReactionAddEvent event) {
@@ -91,6 +106,5 @@ public class OgerOve extends ListenerAdapter {
             event.getChannel().sendMessage("AUGHHHHHHHHH AMBATAKAM").queue();
         }
     }
-
-    }
+}
 
