@@ -65,21 +65,6 @@ public class OgerOve extends ListenerAdapter {
         }
         else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("WismarerOger"))) {
             event.getChannel().sendMessage("Wildschwein Jagen!!!!!!!!!!!!!").queue();
-        }
-        else if (event.getMessage().getContentRaw().equalsIgnoreCase("!michi")) {
-            event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/1015302578919190548/1121705937351217182/UgaUgaMichi.jpg").queue();
-        } 
-        else if (event.getMessage().getContentRaw().equalsIgnoreCase("!cancerdog")) {
-            event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/526697763447111680/1121791547898351778/unknown.jpg https://cdn.discordapp.com/attachments/526697763447111680/1121791547390828654/Leon_Pog.png").queue();
-        } 
-        else if (event.getMessage().getStickers().stream().anyMatch(sticker -> sticker.getName().equalsIgnoreCase("OgerOve"))) {
-            event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/1015302578919190548/1121318532559409253/IMG_4628.jpg").queue();
-        } 
-        else if (event.getMessage().getContentRaw().equalsIgnoreCase("!hebel")) {
-            event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/526697763447111680/1121791710436003970/Screenshot_20230218_230908.png").queue();
-        } 
-        else if (event.getMessage().getContentRaw().equalsIgnoreCase("!?")) {
-            event.getChannel().sendMessage("https://cdn.discordapp.com/attachments/738160562352947331/1111762523901935706/china.mp4").queue();
         } 
         else if (event.getMessage().getContentRaw().equalsIgnoreCase("!Jagen")) {
             int randomNumber = (int) (Math.random() * 100); // Generate a random number between 0 and 100
